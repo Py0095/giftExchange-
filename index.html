@@ -204,30 +204,25 @@
 </div>
 
 <script>
-    // Function to generate a random alphanumeric code
-    function generateCode() {
-        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-        let code = '';
-        for (let i = 0; i < 3; i++) {
-            code += characters.charAt(Math.floor(Math.random() * characters.length));
-        }
-        return code;
-    }
-
-    // Associate codes with names
+    // Static codes and associated names
     const names = [
         "Manoucheca", "Rosley", "Lovelie", "Wilson", "Saincilia", 
         "Kewan", "Keda", "Rolf", "Fabienne", "Benson", 
         "Waguener", "Zenda"
     ];
 
-    // Generate unique codes and associate them with names
+    const staticCodes = [
+        "TA1", "RB2", "DC3", "GD4", "FE5", 
+        "IF6", "FG7", "RH8", "JI9", "WJ0", 
+        "LK1", "HL2"
+    ];
+
+    // Associate each code with a name
     const mapping = {};
     const selectElement = document.getElementById("codeSelection");
 
-    names.forEach((name, index) => {
-        const code = generateCode();
-        mapping[code] = name; // Associate each code with a name
+    staticCodes.forEach((code, index) => {
+        mapping[code] = names[index];
         const option = document.createElement("option");
         option.value = code;
         option.textContent = code;
@@ -240,12 +235,11 @@
         const resultDiv = document.getElementById("result");
 
         if (selectedCode) {
-            // Display the associated name
             resultDiv.textContent = "The name associated with this code is: " + mapping[selectedCode];
 
-            // Disable the selected option in the dropdown
+            // Disable the selected option
             const option = document.querySelector(`#codeSelection option[value="${selectedCode}"]`);
-            option.disabled = true;  // Disable the option to make it unselectable
+            option.disabled = true;
         } else {
             resultDiv.textContent = "Please select a code.";
         }
@@ -281,3 +275,25 @@
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
